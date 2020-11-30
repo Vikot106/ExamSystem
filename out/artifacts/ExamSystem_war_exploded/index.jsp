@@ -111,7 +111,10 @@
     </style>
   </head>
   <body bgcolor="#f0eef5">
-
+  <div class="Top1"  >
+    <ul id="Zi1">
+      <div align="center">在线考试系统</div>
+    </ul></div>
   <%
     request.setCharacterEncoding("utf-8");
     //String totalTime = request.getParameter("40");
@@ -128,25 +131,24 @@
     if(totalTime!=null && subject!=null){
   %>
 
-  <div class="Top1"  >
-    <ul id="Zi1">
-      <div align="center">在线考试系统</div>
-    </ul></div>
+
   <div class="Top2">
 
     <div class="Top2" id="ul1">考试时长：<%=totalTime%>分钟</div>
     <div class="Top2" id="ul2">考试科目：<%=subject%></div>
-    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><div align="center">
     <s:form action="UserLogin" method="POST" name="UserLogin">
       <s:textfield name="ld.UName" label="姓名"></s:textfield>
       <s:textfield name="ld.SId" label="学号" type="number" maxLength="14"></s:textfield>
       <s:textfield name="ld.UId" label="身份证号" type="number" maxLength="14"></s:textfield>
       <s:submit value="登入"></s:submit>
-    </s:form>
+    </s:form></div>
     <%
     }else {
     %>
+    <div class="Top2"><br><br><br><br><div align="center">
     <p>请等待考试开始</p>
+    </div></div>
     <%
       }
     %>

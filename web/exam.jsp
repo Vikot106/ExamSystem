@@ -193,13 +193,13 @@
     <%--    <INPUT TYPE="button" value=" 下载试题 " onclick="location.href='<%=downloadURL%>'" />--%>
     <a href="<%=downloadURL%>"><img src="images/downloadICON.jpg"
                                     width="375" height="185" alt="download"/></a><br><br>
+    <br><div align="left">
     答题卡：
     <s:form action="UserSubmit" method="POST" name="UserSubmit">
-        <s:
     <%
-        for(int i = 1 ; i <= QSubject ; i++){
+        for(int i = 1 ; i <= 3 ; i++){
     %>
-        <s:textfield name="Quest" label="题目<%=Quest%>"></s:textfield>
+        <s:textfield name="sa.answer" label="题目<%=Quest%>"></s:textfield>
     <%
             Quest++;
         }
@@ -207,7 +207,7 @@
         <s:submit value="登入"></s:submit>
     </s:form>
 
-
+    </div>
     </li1></ul>
 </div>
 

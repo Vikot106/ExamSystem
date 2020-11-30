@@ -1,22 +1,28 @@
 package com.bean;
 
-public class SubmitData {
-    public String getQNum() {
-        return QNum;
-    }
+import java.util.ArrayList;
+import java.util.List;
 
-    public void setQNum(String QNum) {
-        this.QNum = QNum;
-    }
+public class SubmitData {
 
     public String getAnswer() {
-        return Answer;
+        return answer;
     }
 
     public void setAnswer(String answer) {
-        Answer = answer;
+        this.answer = answer;
     }
 
-    String QNum;
-    String Answer;
+    String answer;
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(String answers) {
+        System.out.println("awaawawaaa"+answers);
+        this.answers.add(answers);
+    }
+
+    List<String> answers = new ArrayList<>();
 }

@@ -94,8 +94,13 @@ public class ManageAction extends ActionSupport {
         map.put("QuestObject", md.getQuestObject());
         Yaml yml = new Yaml();
         String path = ServletActionContext.getServletContext().getRealPath("/conf/MSetting.yml");
+        String dirPath = ServletActionContext.getServletContext().getRealPath("/conf/");
 //        File file = new File("..\\..\\conf\\MSetting.yml");
         File file = new File(path);
+        File dir = new File(dirPath);
+        if(!dir.exists()){
+            dir.createNewFile();
+        }
         if (file.exists()) {
             file.delete();
         }

@@ -20,30 +20,10 @@ public class LoginAction extends ActionSupport {
         this.ld = ld;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getSId() {
-        return SId;
-    }
-
-    public void setSId(String SId) {
-        this.SId = SId;
-    }
-
     LoginData ld;
     boolean flag = false;
-    String Name;
-    String SId;
 
     public String UserLogin() {
-        this.Name = ld.getUName();
-        this.SId = ld.getSId();
         String name = ld.getUName();
         String sid = ld.getSId();
         String uid = ld.getUId();

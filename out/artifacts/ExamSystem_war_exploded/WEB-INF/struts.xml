@@ -8,7 +8,7 @@
     <package name="default" namespace="/" extends="struts-default">
         <action name="setManageData" class="com.action.ManageAction" method="setManageData">
             <interceptor-ref name="defaultStack">
-<!--                <param name="fileUpload.allowedTypes">application/vnd.ms-excel</param>-->
+                <!--                <param name="fileUpload.allowedTypes">application/vnd.ms-excel</param>-->
                 <param name="fileUpload.allowedExtensions">.xls,.zip</param>
             </interceptor-ref>
             <result name="success">/result.jsp</result>
@@ -18,6 +18,11 @@
         <action name="UserLogin" class="com.action.LoginAction" method="UserLogin">
             <result name="success">/exam.jsp</result>
             <result name="input">/index.jsp</result>
+        </action>
+
+        <action name="UserSubmit" class="com.action.SubmitAction" method="UserSubmit">
+            <result name="success">/submit.jsp</result>
+            <result name="input">/exam.jsp</result>
         </action>
     </package>
 </struts>
