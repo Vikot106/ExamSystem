@@ -57,12 +57,4 @@ public class ManageYaml {
         return rt;
     }
 
-    public String getName(){
-        return la.getName();
-    }
-
-    public String getSId(){
-        return la.getSId();
-    }
-
 }

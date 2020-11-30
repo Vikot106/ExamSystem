@@ -8,19 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.net.*" pageEncoding="UTF-8" %>
 <jsp:useBean id="Data" class="com.ManageYaml" scope="session"></jsp:useBean>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<%!public String getIpAddr(HttpServletRequest request) {
-    String ip = request.getHeader("x-forwarded-for");
-    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-        ip = request.getHeader("Proxy-Client-IP");
+<%!
+    public String getIpAddr(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
     }
-    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-        ip = request.getHeader("WL-Proxy-Client-IP");
-    }
-    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-        ip = request.getRemoteAddr();
-    }
-    return ip;
-}%>
+%>
 <html>
 <head>
     <title>考试页面</title>
@@ -36,6 +38,7 @@
             margin: 0px;
             padding: 0px;
         }
+
         .Top2 ul {
             height: 50px;
             width: 1000px;
@@ -44,6 +47,7 @@
             margin: 0px;
             padding: 0px;
         }
+
         .Top2 {
             height: 1000px;
             width: 1000px;
@@ -57,6 +61,7 @@
             margin-bottom: 0px;
             border: 1px solid #CCCCCC;
         }
+
         .Top1 #Zi1 {
             font-size: 30px;
             font-family: "黑体";
@@ -80,6 +85,7 @@
             padding-bottom: 0px;
             padding-left: 0px;
         }
+
         .Top2 #ul2 {
             margin: 0px;
             height: 50px;
@@ -100,6 +106,7 @@
             border-bottom-style: none;
             border-left-style: none;
         }
+
         .Top2 #ul1 {
             margin: 0px;
             height: 50px;
@@ -120,21 +127,23 @@
             border-bottom-style: none;
             border-left-style: none;
         }
+
         -->
     </style>
 </head>
 <body bgcolor="#f0eef5">
 <%!
-    int ips[] = new int[100];int ans;
-    int ipi=0;
+    int ips[] = new int[100];
+    int ans;
+    int ipi = 0;
     String ipstring;
     int ipint;
 
 %>
 <%!
-    public boolean exist(int no4){
-        for(int i=0;i<ipi;i++){
-            if(ips[i]==no4)
+    public boolean exist(int no4) {
+        for (int i = 0; i < ipi; i++) {
+            if (ips[i] == no4)
                 return true;
         }
         return false;
@@ -145,38 +154,58 @@
     //String name = Data.getName();
     String name = request.getParameter("ld.UName");
     String totalTime = null;
-    String []value = Data.getManageYaml();
+    int QSubject = 1;
+    int QObject = 1;
+    int Quest = 1;
+    String[] value = Data.getManageYaml();
 //    Data.setIP(getIpAddr(request));
     try {
         totalTime = value[1];
-    }catch (Exception e){
+        QSubject = Integer.parseInt(value[2]);
+        QObject = Integer.parseInt(value[3]);
+    } catch (Exception e) {
         e.printStackTrace();
     }
 %>
 <%
     //得到按座位顺序排列的写着所有考生ip的一维数组
-    String tpstr=getIpAddr(request);
-    ipint=Integer.parseInt(Data.ipno4(tpstr));
-    if(exist(ipint))ipi++;
-    System.out.println("getcount:"+Data.getCount());
-    ans=ipint % Data.getCount();
+    String tpstr = getIpAddr(request);
+    ipint = Integer.parseInt(Data.ipno4(tpstr));
+    if (exist(ipint)) ipi++;
+    System.out.println("getcount:" + Data.getCount());
+    ans = ipint % Data.getCount();
     String downloadURL = request.getContextPath() + Data.getFile(ans);
     System.out.println(downloadURL);
 %>
-<div class="Top1"  >
+<div class="Top1">
     <ul id="Zi1">
         <div align="center">在线考试系统</div>
-    </ul></div>
+    </ul>
+</div>
 <div class="Top2">
 
     <div class="Top2" id="ul1">剩余时间：<%=totalTime%>分钟</div>
-    <div class="Top2" id="ul2">姓名：<%=name%></div>
-<%--        <s:textfield name="productName" value="%{#parameters.productName}"/></div>--%>
+    <div class="Top2" id="ul2">姓名：<%=name%>
+    </div>
+    <%--        <s:textfield name="productName" value="%{#parameters.productName}"/></div>--%>
     <br><br><br><br><br><br><br>
-<%--    <input type = "button" value = " 下载1试题 " onclick = "window.location.href = '<%=downloadURL%>'">--%>
-<%--    <INPUT TYPE="button" value=" 下载试题 " onclick="location.href='<%=downloadURL%>'" />--%>
+    <%--    <input type = "button" value = " 下载1试题 " onclick = "window.location.href = '<%=downloadURL%>'">--%>
+    <%--    <INPUT TYPE="button" value=" 下载试题 " onclick="location.href='<%=downloadURL%>'" />--%>
     <a href="<%=downloadURL%>"><img src="images/downloadICON.jpg"
-                           width="375" height="185" alt="download" /></a>
+                                    width="375" height="185" alt="download"/></a><br><br>
+    答题卡：
+    <s:form action="UserSubmit" method="POST" name="UserSubmit">
+        <s:
+    <%
+        for(int i = 1 ; i <= QSubject ; i++){
+    %>
+        <s:textfield name="Quest" label="题目<%=Quest%>"></s:textfield>
+    <%
+            Quest++;
+        }
+    %>
+        <s:submit value="登入"></s:submit>
+    </s:form>
 
 
     </li1></ul>
