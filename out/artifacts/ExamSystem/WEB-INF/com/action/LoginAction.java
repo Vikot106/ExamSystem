@@ -1,12 +1,16 @@
 package com.action;
 
+import com.ManageYaml;
 import com.bean.LoginData;
+import com.bean.SubmitCount;
+import com.bean.SubmitData;
 import com.bean.UserData;
 import com.biz.UserBiz;
 import com.biz.UserBizImp;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -20,10 +24,36 @@ public class LoginAction extends ActionSupport {
         this.ld = ld;
     }
 
+    public List<SubmitCount> getCountS() {
+        return countS;
+    }
+
+    public void setCountS(List<SubmitCount> countS) {
+        this.countS = countS;
+    }
+
     LoginData ld;
     boolean flag = false;
+    SubmitCount sc;
+    List<SubmitCount> countS;
+    List<SubmitCount> countO;
+    ManageYaml my;
+
+    public List<SubmitCount> SCount(int count){
+        List<SubmitCount> list=new ArrayList<SubmitCount>();
+        for(int i = 1 ; i <= count ; i++){
+            sc = new SubmitCount();
+            sc.setCount(Integer.toString(i));
+            list.add(sc);
+        }
+        return list;
+    }
 
     public String UserLogin() {
+        my = new ManageYaml();
+        String[] value = my.getManageYaml();
+        countS = SCount(Integer.parseInt(value[2]));
+        countO = SCount(Integer.parseInt(value[3]));
         String name = ld.getUName();
         String sid = ld.getSId();
         String uid = ld.getUId();

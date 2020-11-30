@@ -28,8 +28,8 @@ public class ManageYaml {
             Map<String, Object> map = yml.load(buffer);
             value[0] = (String) map.get("subject");
             value[1] = (String) map.get("time");
-            value[2] = (String) map.get("questSubject");
-            value[3] = (String) map.get("questObject");
+            value[2] = (String) map.get("QuestSubject");
+            value[3] = (String) map.get("QuestObject");
             buffer.close();
             reader.close();
         }catch(Exception e){

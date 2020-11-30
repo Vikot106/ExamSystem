@@ -193,20 +193,35 @@
     <%--    <INPUT TYPE="button" value=" 下载试题 " onclick="location.href='<%=downloadURL%>'" />--%>
     <a href="<%=downloadURL%>"><img src="images/downloadICON.jpg"
                                     width="375" height="185" alt="download"/></a><br><br>
-    <br><div align="left">
-    答题卡：
-    <s:form action="UserSubmit" method="POST" name="UserSubmit">
-    <%
-        for(int i = 1 ; i <= 3 ; i++){
-    %>
-        <s:textfield name="sa.answer" label="题目<%=Quest%>"></s:textfield>
-    <%
-            Quest++;
-        }
-    %>
-        <s:submit value="登入"></s:submit>
-    </s:form>
-
+    <br><div align="center">
+    注意：考试结束后将自动提交已保存的答案。<br><br>
+    答题卡：<br>
+    主观题答题区<br>
+    <table border="2" width="300" align="center">
+        <tr>
+            <td>题号</td>
+            <td>答案</td>
+        </tr>
+    <s:form action="UserSubmitS" method="POST" name="UserSubmit">
+        <s:iterator value="countS" status="stat" >
+            <s:textfield name="countS[%{#stat.index}].count" label="%{countS[#stat.index].count}" value=""/>
+<%--            <s:property value="count"/>--%>
+        </s:iterator>
+        <s:submit value="保存答案"></s:submit>
+<%--    </s:form>--%>
+    </table>
+    <table border="2" width="150" align="center">
+        <tr>
+            <td>查看保存内容</td>
+        </tr>
+        <s:iterator value="countS" status="stat" >
+        <tr>
+            <td><s:property value="count"/></td>
+        </tr>
+        </s:iterator>
+        <s:submit value="保存答案"></s:submit>
+    </table>
+    aaaa<%=QSubject%>
     </div>
     </li1></ul>
 </div>
