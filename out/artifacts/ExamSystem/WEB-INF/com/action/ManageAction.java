@@ -210,9 +210,14 @@ public class ManageAction extends ActionSupport {
     public String ExamEnd() throws Exception {
         String uploadPath = ServletActionContext.getServletContext().getRealPath("/upload");
         String savePath = ServletActionContext.getServletContext().getRealPath("/source/AnswerPack.zip");
+        String closeFlag = ServletActionContext.getServletContext().getRealPath("/source/closeFlag");
+        File flag = new File(closeFlag);
         CZipFile CZip = new CZipFile();
         OutputStream zc = new FileOutputStream(savePath,true);
         CZip.toZip(uploadPath,zc,true);
+        if(!flag.exists()){
+            flag.createNewFile();
+        }
         return SUCCESS;
     }
 }

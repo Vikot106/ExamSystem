@@ -22,7 +22,7 @@
 
         <action name="UserSubmitS" class="com.action.LoginAction" method="UserSubmitS">
             <result name="success">/exam.jsp</result>
-            <result name="input">/exam.jsp</result>
+            <result name="input">/stop.jsp</result>
         </action>
 
         <action name="ExamEnd" class="com.action.ManageAction" method="ExamEnd">

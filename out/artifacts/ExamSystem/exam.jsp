@@ -128,6 +128,35 @@
             border-left-style: none;
         }
 
+
+        .table1{
+            border:01px solid #F5F5F5;
+            clear: none;
+            float: left;
+            padding: 0px;
+            margin: 0px;
+            width: 200px;
+        }
+        .Top2 #tn {
+            margin-top: 0px;
+            margin-right: auto;
+            margin-bottom: 0px;
+            margin-left: auto;
+            padding-top: 0px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            width: 405px;
+        }
+        .table2{
+            border:01px solid #F5F5F5;
+            float: left;
+            clear: right;
+            margin: 0px;
+            padding: 0px;
+            width: 200px;
+        }
+
         -->
     </style>
 </head>
@@ -154,7 +183,7 @@
     //String name = Data.getName();
     String name = request.getParameter("ld.UName");
     String SId = request.getParameter("ld.SId");
-    session.setAttribute("SId",SId);
+    session.setAttribute("SId", SId);
     String totalTime = null;
     int QSubject = 1;
     int QObject = 1;
@@ -186,7 +215,8 @@
 </div>
 <div class="Top2">
 
-    <div class="Top2" id="ul1">结束时间：<%=totalTime%></div>
+    <div class="Top2" id="ul1">结束时间：<%=totalTime%>
+    </div>
     <div class="Top2" id="ul2">姓名：<%=name%>
     </div>
     <%--        <s:textfield name="productName" value="%{#parameters.productName}"/></div>--%>
@@ -198,8 +228,19 @@
     <br>
     <div align="center">
         注意：考试结束后将自动提交已保存的答案。<br><br>
+        <p>请输入答案</p>
+        <div align="center">
+            <s:form action="UserSubmitS" method="POST" name="UserSubmitS">
+                <s:iterator value="Answer" status="stat">
+                    <s:textfield name="answer[%{#stat.index}].answer" value=" "/>
+                </s:iterator>
+                <s:submit value="保存答案"></s:submit>
+            </s:form>
+        </div>
+    </div><br>
         答题卡：<br><br>
-        <table border="2" width="100" align="center">
+        <div id="tn">
+        <table border="2" width="100" align="center" class="table1">
             <tr>
                 <td>题号</td>
                 <%--                <td>答案</td>--%>
@@ -217,33 +258,17 @@
             </s:iterator>
         </table>
 
-        <table border="2" width="250" align="center">
-            <tr>
-                <td>输入答案</td>
-            </tr>
-            <tr>
-                <s:form action="UserSubmitS" method="POST" name="UserSubmitS">
-                    <s:iterator value="Answer" status="stat">
-                        <s:textfield name="answer[%{#stat.index}].answer" value=" "/>
-                    </s:iterator>
-                    <s:submit value="保存答案"></s:submit>
-                </s:form>
-            </tr>
-        </table>
-
-        <table border="2" width="200" align="center">
+        <table border="2" width="200" align="center" class="table2">
             <tr>
                 <td>已提交内容</td>
             </tr>
-                <s:iterator value="Answer" status="stat">
-                    <tr>
-                        <td><s:property value="answer"/></td>
-                    </tr>
-                </s:iterator>
+            <s:iterator value="Answer" status="stat">
+                <tr>
+                    <td><s:property value="answer"/></td>
+                </tr>
+            </s:iterator>
         </table>
-
-        aaaa<%=QSubject%>
-    </div>
+        </div>
     </li1></ul>
 </div>
 

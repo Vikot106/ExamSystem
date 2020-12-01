@@ -63,6 +63,7 @@ public class LoginAction extends ActionSupport {
         System.out.println("qqqqqqqqqqqq  "+SId);
         String path = ServletActionContext.getServletContext().getRealPath("/upload/"+SId+".txt");
         String dirPath = ServletActionContext.getServletContext().getRealPath("/upload");
+        String closeFlag = ServletActionContext.getServletContext().getRealPath("/source/closeFlag");
         File file = new File(path);
         File dir = new File(dirPath);
         if(!dir.exists()){
@@ -101,6 +102,10 @@ public class LoginAction extends ActionSupport {
 //            SubmitCount p = (SubmitCount) it.next();
 //            System.out.println("===============" + p.getCount());
 //        }
+        File flag = new File(closeFlag);
+        if(flag.exists()){
+            return INPUT;
+        }
         return SUCCESS;
     }
 
