@@ -133,14 +133,25 @@
     <div class="Top2" id="ul2">考试科目：<%=subject%></div>
     <br><br><br><br><br><br>
 
-
+    <div align="center">
     考试时长：<%=time%>分钟<br>
-    考生数量：<%=stuCount%>刷新<br>
+    考生数量：<%=stuCount%><br>
     结束时间:<br>
-    考试开始<br>
-    已交卷人数：刷新<br>
-    结束考试<br>
-    导出数据<br>
+    <s:form action="setManageData" method="POST" name="setManageData">
+        <s:textfield name="md.subject" label="考试科目"></s:textfield>
+        <s:textfield name="md.time" label="考试时间" type="number" maxLength="14"></s:textfield>
+        <%--    </s:form>--%>
+
+        <%--        考生数据：上传<br><br><br>--%>
+        <%--        题目类型设置：<br><br>--%>
+        <%--    <s:form action="setManageData" method="POST" name="setManageData">--%>
+        <s:textfield name="md.questSubject" label="主观题数量" type="number"></s:textfield>
+        <s:textfield name="md.questObject" label="客观题数量" type="number"></s:textfield>
+        <s:file name="uploadData" label="上传考生信息" />
+        <s:file name="uploadComp" label="上传试题信息" />
+        <s:submit value="开始考试"></s:submit>
+    </s:form>
+    </div>
     </li1></ul>
 </div>
 

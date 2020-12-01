@@ -24,5 +24,9 @@
             <result name="success">/exam.jsp</result>
             <result name="input">/exam.jsp</result>
         </action>
+
+        <action name="ExamEnd" class="com.action.ManageAction" method="ExamEnd">
+            <result name="success">/exam.jsp</result>
+        </action>
     </package>
 </struts>

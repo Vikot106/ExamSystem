@@ -18,7 +18,7 @@ public class ManageYaml {
     getProblem gp = new getProblem();
 
     public String[] getManageYaml() {
-        String[] value = new String[4];
+        String[] value = new String[5];
         try {
             Yaml yml = new Yaml();
             String path = ServletActionContext.getServletContext().getRealPath("/conf/MSetting.yml");
@@ -30,6 +30,7 @@ public class ManageYaml {
             value[1] = (String) map.get("time");
             value[2] = (String) map.get("QuestSubject");
             value[3] = (String) map.get("QuestObject");
+            value[4] = (String) map.get("endTime");
             buffer.close();
             reader.close();
         }catch(Exception e){

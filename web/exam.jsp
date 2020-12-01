@@ -153,16 +153,7 @@
     request.setCharacterEncoding("utf-8");
     //String name = Data.getName();
     String name = request.getParameter("ld.UName");
-    String SId = null;
-    Cookie cookie = new Cookie("Cooieinfo",ld.SId);
-    if(SId==null){
-        SId = request.getParameter("ld.SId");
-        cookie = new Cookie("SId",SId);
-        cookie.setMaxAge(1 * 24 * 60 * 60);
-    }
-    if(cookie!=null){
-        SId = cookie.getValue();
-    }
+    String SId = request.getParameter("ld.SId");
     session.setAttribute("SId",SId);
     String totalTime = null;
     int QSubject = 1;
@@ -171,7 +162,7 @@
     String[] value = Data.getManageYaml();
 //    Data.setIP(getIpAddr(request));
     try {
-        totalTime = value[1];
+        totalTime = value[4];
         QSubject = Integer.parseInt(value[2]);
         QObject = Integer.parseInt(value[3]);
     } catch (Exception e) {
@@ -195,7 +186,7 @@
 </div>
 <div class="Top2">
 
-    <div class="Top2" id="ul1">剩余时间：<%=totalTime%>分钟</div>
+    <div class="Top2" id="ul1">结束时间：<%=totalTime%></div>
     <div class="Top2" id="ul2">姓名：<%=name%>
     </div>
     <%--        <s:textfield name="productName" value="%{#parameters.productName}"/></div>--%>

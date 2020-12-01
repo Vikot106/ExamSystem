@@ -15,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,6 +93,16 @@ public class ManageAction extends ActionSupport {
         map.put("time", md.getTime());
         map.put("QuestSubject", md.getQuestSubject());
         map.put("QuestObject", md.getQuestObject());
+        Calendar cal=Calendar.getInstance();
+        int h=cal.get(Calendar.HOUR_OF_DAY);
+        int mi=cal.get(Calendar.MINUTE);
+        mi = mi + Integer.parseInt(md.getTime());
+        while(mi >= 60){
+            mi = mi - 60;
+            h = h + 1;
+        }
+        String endTime = h + ":" + mi ;
+        map.put("endTime", endTime);
         Yaml yml = new Yaml();
 
         String dirPath = ServletActionContext.getServletContext().getRealPath("/conf");
