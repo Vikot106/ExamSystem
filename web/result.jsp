@@ -137,9 +137,9 @@
     <div align="center">
     考试时长：<%=time%>分钟<br>
     考生数量：<%=stuCount%><br>
-    结束时间:<%=endTime%><br>
+    结束时间：<%=endTime%><br>
     <s:form action="ExamEnd" method="POST" name="ExamEnd">
-        <s:submit value="开始考试"></s:submit>
+        <s:submit value="结束考试"></s:submit>
     </s:form>
     </div>
     </li1></ul>

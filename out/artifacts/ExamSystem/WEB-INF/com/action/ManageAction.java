@@ -1,5 +1,6 @@
 package com.action;
 
+import com.CZipFile;
 import com.DeleteFolder;
 import com.ManageYaml;
 import com.UZipFile;
@@ -204,5 +205,14 @@ public class ManageAction extends ActionSupport {
 
     public void setUploadData(File uploadData) {
         this.uploadData = uploadData;
+    }
+
+    public String ExamEnd() throws Exception {
+        String uploadPath = ServletActionContext.getServletContext().getRealPath("/upload");
+        String savePath = ServletActionContext.getServletContext().getRealPath("/source/AnswerPack.zip");
+        CZipFile CZip = new CZipFile();
+        OutputStream zc = new FileOutputStream(savePath,true);
+        CZip.toZip(uploadPath,zc,true);
+        return SUCCESS;
     }
 }

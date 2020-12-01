@@ -26,7 +26,7 @@
         </action>
 
         <action name="ExamEnd" class="com.action.ManageAction" method="ExamEnd">
-            <result name="success">/exam.jsp</result>
+            <result name="success">/statu.jsp</result>
         </action>
     </package>
 </struts>

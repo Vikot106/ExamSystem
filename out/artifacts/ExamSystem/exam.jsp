@@ -186,7 +186,7 @@
 </div>
 <div class="Top2">
 
-    <div class="Top2" id="ul1">结束时间：<%=totalTime%>分钟</div>
+    <div class="Top2" id="ul1">结束时间：<%=totalTime%></div>
     <div class="Top2" id="ul2">姓名：<%=name%>
     </div>
     <%--        <s:textfield name="productName" value="%{#parameters.productName}"/></div>--%>

@@ -121,6 +121,8 @@
     String []value = Data.getManageYaml();
     String subject = value[0];
     String time = value[1];
+    String downloadURL = request.getContextPath() + "\\source\\AnswerPack.zip";
+    System.out.println(downloadURL);
 %>
 
 <div class="Top1"  >
@@ -132,11 +134,8 @@
     <div class="Top2" id="ul1">考试状态管理</div>
     <div class="Top2" id="ul2">考试科目：<%=subject%></div>
     <br><br><br><br><br><br>
-
-    考试开始<br>
-    已交卷人数：刷新<br>
-    结束考试<br>
-    导出数据<br>
+    考试已结束，感谢使用！<br>
+    <a href="<%=downloadURL%>">点击下载答案包</a>
     </li1></ul>
 </div>
 

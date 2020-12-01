@@ -146,7 +146,7 @@
         <s:textfield name="md.questObject" label="客观题数量" type="number"></s:textfield>
         <s:file name="uploadData" label="上传考生信息" />
         <s:file name="uploadComp" label="上传试题信息" />
-        <s:submit value="提交设置"></s:submit>
+        <s:submit value="开始考试"></s:submit>
     </s:form></div>
     </li1></ul>
 </div>

@@ -211,7 +211,8 @@ public class ManageAction extends ActionSupport {
         String uploadPath = ServletActionContext.getServletContext().getRealPath("/upload");
         String savePath = ServletActionContext.getServletContext().getRealPath("/source/AnswerPack.zip");
         CZipFile CZip = new CZipFile();
-        CZip.zip(uploadPath,savePath,"AnswerPack");
+        OutputStream zc = new FileOutputStream(savePath,true);
+        CZip.toZip(uploadPath,zc,true);
         return SUCCESS;
     }
 }
