@@ -20,9 +20,9 @@
             <result name="input">/index.jsp</result>
         </action>
 
-<!--        <action name="UserSubmit" class="com.action.SubmitAction" method="UserSubmit">-->
-<!--            <result name="success">/submit.jsp</result>-->
-<!--            <result name="input">/exam.jsp</result>-->
-<!--        </action>-->
+        <action name="UserSubmitS" class="com.action.LoginAction" method="UserSubmitS">
+            <result name="success">/exam.jsp</result>
+            <result name="input">/exam.jsp</result>
+        </action>
     </package>
 </struts>

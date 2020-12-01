@@ -153,6 +153,17 @@
     request.setCharacterEncoding("utf-8");
     //String name = Data.getName();
     String name = request.getParameter("ld.UName");
+    String SId = null;
+    Cookie cookie = new Cookie("Cooieinfo",ld.SId);
+    if(SId==null){
+        SId = request.getParameter("ld.SId");
+        cookie = new Cookie("SId",SId);
+        cookie.setMaxAge(1 * 24 * 60 * 60);
+    }
+    if(cookie!=null){
+        SId = cookie.getValue();
+    }
+    session.setAttribute("SId",SId);
     String totalTime = null;
     int QSubject = 1;
     int QObject = 1;
@@ -193,35 +204,54 @@
     <%--    <INPUT TYPE="button" value=" 下载试题 " onclick="location.href='<%=downloadURL%>'" />--%>
     <a href="<%=downloadURL%>"><img src="images/downloadICON.jpg"
                                     width="375" height="185" alt="download"/></a><br><br>
-    <br><div align="center">
-    注意：考试结束后将自动提交已保存的答案。<br><br>
-    答题卡：<br>
-    主观题答题区<br>
-    <table border="2" width="300" align="center">
-        <tr>
-            <td>题号</td>
-            <td>答案</td>
-        </tr>
-    <s:form action="UserSubmitS" method="POST" name="UserSubmit">
-        <s:iterator value="countS" status="stat" >
-            <s:textfield name="countS[%{#stat.index}].count" label="%{countS[#stat.index].count}" value=""/>
-<%--            <s:property value="count"/>--%>
-        </s:iterator>
-        <s:submit value="保存答案"></s:submit>
-<%--    </s:form>--%>
-    </table>
-    <table border="2" width="150" align="center">
-        <tr>
-            <td>查看保存内容</td>
-        </tr>
-        <s:iterator value="countS" status="stat" >
-        <tr>
-            <td><s:property value="count"/></td>
-        </tr>
-        </s:iterator>
-        <s:submit value="保存答案"></s:submit>
-    </table>
-    aaaa<%=QSubject%>
+    <br>
+    <div align="center">
+        注意：考试结束后将自动提交已保存的答案。<br><br>
+        答题卡：<br><br>
+        <table border="2" width="100" align="center">
+            <tr>
+                <td>题号</td>
+                <%--                <td>答案</td>--%>
+            </tr>
+            <%--            <tr>--%>
+            <s:iterator value="countS" status="stat">
+                <tr>
+                    <td><s:property value="count"/></td>
+                </tr>
+            </s:iterator>
+            <s:iterator value="countO" status="stat">
+                <tr>
+                    <td><s:property value="count"/></td>
+                </tr>
+            </s:iterator>
+        </table>
+
+        <table border="2" width="250" align="center">
+            <tr>
+                <td>输入答案</td>
+            </tr>
+            <tr>
+                <s:form action="UserSubmitS" method="POST" name="UserSubmitS">
+                    <s:iterator value="Answer" status="stat">
+                        <s:textfield name="answer[%{#stat.index}].answer" value=" "/>
+                    </s:iterator>
+                    <s:submit value="保存答案"></s:submit>
+                </s:form>
+            </tr>
+        </table>
+
+        <table border="2" width="200" align="center">
+            <tr>
+                <td>已提交内容</td>
+            </tr>
+                <s:iterator value="Answer" status="stat">
+                    <tr>
+                        <td><s:property value="answer"/></td>
+                    </tr>
+                </s:iterator>
+        </table>
+
+        aaaa<%=QSubject%>
     </div>
     </li1></ul>
 </div>

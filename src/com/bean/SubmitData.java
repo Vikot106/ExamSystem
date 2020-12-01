@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubmitData {
-
     public String getAnswer() {
         return answer;
     }
@@ -14,4 +13,5 @@ public class SubmitData {
     }
 
     String answer;
+
 }
