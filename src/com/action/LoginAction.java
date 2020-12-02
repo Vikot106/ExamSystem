@@ -59,7 +59,8 @@ public class LoginAction extends ActionSupport {
         String strCount;
         int count = 1;
         int nCount;
-        String SId = request.getSession().getAttribute("SId").toString();
+        String SId = "null";
+        SId = request.getSession().getAttribute("SId").toString();
         System.out.println("qqqqqqqqqqqq  "+SId);
         String path = ServletActionContext.getServletContext().getRealPath("/upload/"+SId+".txt");
         String dirPath = ServletActionContext.getServletContext().getRealPath("/upload");

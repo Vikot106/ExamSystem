@@ -129,14 +129,8 @@
         }
 
 
-        .table1{
-            border:01px solid #F5F5F5;
-            clear: none;
-            float: left;
-            padding: 0px;
-            margin: 0px;
-            width: 200px;
-        }
+
+
         .Top2 #tn {
             margin-top: 0px;
             margin-right: auto;
@@ -146,15 +140,37 @@
             padding-right: 0px;
             padding-bottom: 0px;
             padding-left: 0px;
-            width: 405px;
+            width: 410px;
         }
-        .table2{
-            border:01px solid #F5F5F5;
+
+        .Top2 #tn2 {
+            margin-top: 0px;
+            margin-right: auto;
+            margin-bottom: 0px;
+            margin-left: auto;
+            padding-top: 0px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            width: 800px;
+        }
+        .table1 {
+            border: 01px solid #F5F5F5;
+
+            clear: none;
+            float: left;
+            padding: 0px;
+            margin: 0px;
+            width: 100px;
+
+        }
+        .table2 {
+            border: 01px solid #F5F5F5;
             float: left;
             clear: right;
             margin: 0px;
             padding: 0px;
-            width: 200px;
+            width: 300px;
         }
 
         -->
@@ -227,50 +243,48 @@
                                     width="375" height="185" alt="download"/></a><br><br>
     <br>
     <div align="center">
-        注意：考试结束后将自动提交已保存的答案。<br><br>
-        <p>请输入答案</p>
-        <div align="center">
-            <s:form action="UserSubmitS" method="POST" name="UserSubmitS">
-                <s:iterator value="Answer" status="stat">
-                    <s:textfield name="answer[%{#stat.index}].answer" value=" "/>
-                </s:iterator>
-                <s:submit value="保存答案"></s:submit>
-            </s:form>
-        </div>
-    </div><br>
+        注意：考试结束后将自动提交已保存的答案。<br>
         答题卡：<br><br>
         <div id="tn">
-        <table border="2" width="100" align="center" class="table1">
-            <tr>
-                <td>题号</td>
-                <%--                <td>答案</td>--%>
-            </tr>
-            <%--            <tr>--%>
-            <s:iterator value="countS" status="stat">
+            <table border="2" width="100" align="center" class="table1">
                 <tr>
-                    <td><s:property value="count"/></td>
+                    <td>题号</td>
+                    <%--                <td>答案</td>--%>
                 </tr>
-            </s:iterator>
-            <s:iterator value="countO" status="stat">
-                <tr>
-                    <td><s:property value="count"/></td>
-                </tr>
-            </s:iterator>
-        </table>
+                <%--            <tr>--%>
+                <s:iterator value="countS" status="stat">
+                    <tr>
+                        <td><s:property value="count"/></td>
+                    </tr>
+                </s:iterator>
+                <s:iterator value="countO" status="stat">
+                    <tr>
+                        <td><s:property value="count"/></td>
+                    </tr>
+                </s:iterator>
+            </table>
 
-        <table border="2" width="200" align="center" class="table2">
-            <tr>
-                <td>已提交内容</td>
-            </tr>
-            <s:iterator value="Answer" status="stat">
+            <table border="2" width="300" align="center" class="table2">
                 <tr>
-                    <td><s:property value="answer"/></td>
+                    <td width="100">已提交内容</td>
+                    <td width="200">输入答案</td>
                 </tr>
-            </s:iterator>
-        </table>
+                <s:form action="UserSubmitS" method="POST" name="UserSubmitS" theme="simple">
+                    <s:iterator value="Answer" status="stat">
+                        <tr>
+                            <td><s:property value="answer"/></td>
+                            <td><s:textfield name="answer[%{#stat.index}].answer" value=" "/></td>
+                        </tr>
+                    </s:iterator>
+            </table><br><br><br><br><br><br><br><br>
+                    <div id="tn2">
+                    <s:submit value="保存答案" theme="simple"></s:submit>
+                    </div>
+                </s:form>
+
         </div>
-    </li1></ul>
-</div>
+        </li1></ul>
+    </div>
 
 
 </body>
